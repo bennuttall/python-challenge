@@ -1,16 +1,11 @@
-import pickle
+from pickle import load
 
-f = open('banner.p','rb')
-load = pickle.load(f)
+f = open('banner.p', 'r')
+data = load(f)
 
-for row in load:
-    print row
-
-s = ''
-
-for i in load:
-  for j in i:
-    s += j[0]*j[1]
-  s += '\n'
-
-print s
+for row in data:
+    r = ''
+    for tup in row:
+        char, n = tup
+        r += n * char
+    print r
