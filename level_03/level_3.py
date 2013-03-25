@@ -1,17 +1,21 @@
-f = open('text3.txt','r')
+f = open('text3.txt', 'r')
 
-low = range(96,123)
-upp = range(64,91)
+answer = ''
+while True:
+    line = f.readline()
+    if len(line):
+        for i in range(4, len(line) - 4):
+            before_before = line[i - 4]
+            before = line[i - 3: i]
+            mid = line[i]
+            after = line[i + 1: i + 4]
+            after_after = line[i + 4]
+            if (before_before.islower() and before.isupper() and mid.islower()
+            and after.isupper() and after_after.islower()):
+                answer += mid
+    else:
+        break
 
-ans = ''
-while 1:
-  c = f.readline()
-  if len(c):
-    for i in range(73):
-      if ord(c[i]) in low and all([ord(j) in upp for j in c[i+1:i+4]]) and ord(c[i+4]) in low and all([ord(j) in upp for j in c[i+5:i+8]]) and ord(c[i+8]) in low:
-        ans += c[i+4]
-  else:
-    break
-            
 f.close()
-print ans
+
+print answer
