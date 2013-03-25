@@ -2,21 +2,21 @@ import Image
 
 img = Image.open('oxygen.png')
 
-box = (0,43,608,44)
+box = (0, 43, 608, 44)
 img = img.crop(box)
 
-im = img.load()
+image = img.load()
 
-str1 = ''
-for i in range(0,608,7):
-    str1 += chr(im[i,0][0])
+answer_1 = ''
+for i in range(0, 608, 7):
+    answer_1 += chr(image[i, 0][0])
 
-print str1
+print answer_1
 
-str2 = ''
+answer_2 = ''
 # given [105, 110, 116, 101, 103, 114, 105, 116, 121]
 nxt = (105, 110, 116, 101, 103, 114, 105, 116, 121)
 for i in nxt:
-    str2 += chr(i)
+    answer_2 += chr(i)
 
-print str2
+print answer_2
