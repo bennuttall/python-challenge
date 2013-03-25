@@ -1,11 +1,11 @@
-import zipfile
-f = zipfile.ZipFile('channel.zip','r')
+from zipfile import ZipFile
+
+f = ZipFile('channel.zip', 'r')
 
 n = 90052
-loop = 0
 comments = ''
 
-while 1:
+while True:
     fn = str(n) + '.txt'
     read = f.read(fn)
     comments += f.getinfo(fn).comment
