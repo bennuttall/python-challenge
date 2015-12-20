@@ -1,33 +1,14 @@
-f = open('text2.txt', 'r')
+with open('text2.txt', 'r') as f:
+    text = f.read()
 
-chars = {}
+chars_set = set(text)
 
-while True:
-    char = f.readline(1)
-    if len(char):
-        if char in chars:
-            chars[char] += 1
-        else:
-            chars[char] = 1
-    else:
-        break
+ans = ''
 
-f.seek(0)
+for char in text:
+    if char in chars_set:
+        chars_set.remove(char)
+        if text.count(char) == 1:
+            ans += char
 
-answer_chars = ''
-for char in chars:
-    if chars[char] == 1:
-        answer_chars += char
-
-answer = ''
-while True:
-    c = f.readline(1)
-    if len(c):
-        if c in answer_chars:
-            answer += c
-    else:
-        break
-
-f.close()
-
-print answer
+print(ans)
