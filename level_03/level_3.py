@@ -1,21 +1,8 @@
-f = open('text3.txt', 'r')
+import re
 
-answer = ''
-while True:
-    line = f.readline()
-    if len(line):
-        for i in range(4, len(line) - 4):
-            before_before = line[i - 4]
-            before = line[i - 3: i]
-            mid = line[i]
-            after = line[i + 1: i + 4]
-            after_after = line[i + 4]
-            if (before_before.islower() and before.isupper() and mid.islower()
-            and after.isupper() and after_after.islower()):
-                answer += mid
-    else:
-        break
+with open('text3.txt') as f:
+    text = f.read()
 
-f.close()
+matches = re.findall('[a-z][A-Z]{3}[a-z][A-Z]{3}[a-z]', text)
 
-print answer
+print(''.join(m[4] for m in matches))
